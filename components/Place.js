@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { View, StyleSheet } from "react-native";
 import PlaceItem from "./PlaceItem";
 
 function Place() {
