@@ -4,18 +4,24 @@ import {
   useCameraPermissions,
   PermissionStatus,
 } from "expo-image-picker";
-import { Permissions } from "expo";
 
-//import * as ImagePicker from "expo-image-picker";
 //Which launch the camera and wait us to take an image
 
 function ImagePicker() {
   //For ios
   const [cameraPermissionInformation, requestPermission] =
     useCameraPermissions();
-  /*   async function verifyPermission() {
+
+  async function verifyPermission() {
+    console.log("🍎");
+    console.log(
+      cameraPermissionInformation.status,
+      "🍎",
+      PermissionStatus.UNDETERMINED
+    );
     //In here we will check if we already have permission to use camera
     if (cameraPermissionInformation.status === PermissionStatus.UNDETERMINED) {
+      console.log(cameraPermissionInformation.status, "🍎");
       //Case there is no permission yet
       const permissionResponse = await requestPermission();
 
@@ -30,15 +36,19 @@ function ImagePicker() {
       return false;
     }
     //We return true if we have the permission to use the camera
+    console.log("🍎 last", cameraPermissionInformation.status);
     return true;
-  } */
+  }
 
   async function takeImageHandler() {
     //Needed for IOS permission
-    //const hasPermission = await verifyPermission();
-    //if (!hasPermission) {
-    // return;
-    //}
+    const hasPermission = await verifyPermission();
+    console.log("====================================");
+    console.log(hasPermission, "🍎 has");
+    console.log("====================================");
+    if (!hasPermission) {
+      return;
+    }
     //
 
     const image = await launchCameraAsync({
