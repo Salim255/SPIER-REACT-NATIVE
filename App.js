@@ -5,6 +5,8 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import PlaceForm from "./components/PlaceForm";
 import AddPlace from "./screens/AddPlace";
 import Welcome from "./screens/Welcome";
+import IconButton from "./components/UI/IconButton";
+
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
@@ -12,8 +14,21 @@ export default function App() {
       <StatusBar style="dark" />
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen name="AddPlce" component={AddPlace} />
-          <Stack.Screen name="Welcome" component={Welcome} />
+          <Stack.Screen
+            name="Welcome"
+            component={Welcome}
+            options={({ navigation }) => ({
+              headerRight: ({ tintColor }) => (
+                <IconButton
+                  icon="add"
+                  size={24}
+                  color={tintColor}
+                  onPress={() => navigation.navigate("AddPlace")}
+                />
+              ),
+            })}
+          />
+          <Stack.Screen name="AddPlace" component={AddPlace} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

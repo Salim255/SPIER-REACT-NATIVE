@@ -1,11 +1,11 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text } from "react-native";
 import PlaceItem from "./PlaceItem";
 
-function Place() {
+function Place({ place }) {
   if (!place) {
     return (
-      <View style={style.fallbackContainer}>
-        <Text style={style.fallbackText}>
+      <View style={styles.fallbackContainer}>
+        <Text style={styles.fallbackText}>
           No place Added Yet - Start Adding some!
         </Text>
       </View>
