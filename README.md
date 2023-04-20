@@ -15,4 +15,11 @@
 ### 2\ Configure permissions:
 
 ### a\ Put this plugin in our app.json: "plugins": [["expo-image-picker", { "cameraPermission": "The app accesses your photos to let you share them with your friends."}]], to set the permission that we wanna use
+
 # Rokand-Garros
+
+## 🍎 locationPicker:
+
+### 1\ run: expo install expo-location
+
+### 2\ Permissions: no needed
