@@ -1,7 +1,7 @@
 //Here we offering two ways of picking a location.
 //Locating the user through GPS, or allowing the user to pick a location on a map.
 
-import { Alert, View, StyleSheet } from "react-native";
+import { Alert, View, StyleSheet, Text, Image } from "react-native";
 import OutlineBtn from "./UI/OutlineBtn";
 import { Colors } from "../constants/colors";
 import {
@@ -9,12 +9,17 @@ import {
   useForegroundPermissions,
   PermissionStatus,
 } from "expo-location";
+import { useState } from "react";
+import { getMapPreview } from "../util/location";
 function LocationPicker() {
+  const [pickedLocation, setPickedLocation] = useState();
   const [locationPermissionInformation, requestPermission] =
     useForegroundPermissions();
+
   //We need this permison to allow get to  the user location
   async function verifyPermissions() {
     //In here we will check if we already have permission to use camera
+
     if (
       locationPermissionInformation.status === PermissionStatus.UNDETERMINED
     ) {
@@ -42,11 +47,31 @@ function LocationPicker() {
     }
     const location = await getCurrentPositionAsync();
     console.log(location);
+    setPickedLocation({
+      lat: location.coords.altitude,
+      lng: location.coords.longitude,
+    });
   }
   function pickOnMapHandler() {}
+
+  let locationPreview = <Text>No location picked yet.</Text>;
+  if (pickedLocation) {
+    console.log(
+      getMapPreview(pickedLocation.lat, pickedLocation.lng),
+      "helooooo🍎"
+    );
+    locationPreview = (
+      <Image
+        style={styles.image}
+        source={{
+          uri: getMapPreview(pickedLocation.lat, pickedLocation.lng),
+        }}
+      />
+    );
+  }
   return (
     <View>
-      <View style={styles.mapPreview}></View>
+      <View style={styles.mapPreview}>{locationPreview}</View>
       <View style={styles.actions}>
         <OutlineBtn icon="location" onPress={getLocationHandler}>
           Your current location
@@ -75,5 +100,9 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
+  },
+  image: {
+    width: "100%",
+    height: "100%",
   },
 });

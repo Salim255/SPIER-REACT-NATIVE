@@ -23,3 +23,13 @@
 ### 1\ run: expo install expo-location
 
 ### 2\ Permissions: no needed
+
+## 🍎 Map Preview:
+
+### 1\ Map Static API
+
+#### a \ create project
+
+#### b \ API , make sure you have map static API, and get a Key like this SyBNZoUb1QG5R17zkIqDFAljje1biSUXBMw
+
+AIzaSyBNZoUb1QG5R17zkIqDFAljje1biSUXBMw

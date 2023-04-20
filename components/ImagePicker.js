@@ -39,10 +39,10 @@ function ImagePicker() {
 
   async function takeImageHandler() {
     //Needed for IOS permission
-    /*  const hasPermission = await verifyPermission();
+    const hasPermission = await verifyPermission();
     if (!hasPermission) {
       return;
-    } */
+    }
     //
 
     const image = await launchCameraAsync({
@@ -59,9 +59,7 @@ function ImagePicker() {
   if (pickedImage) {
     imagePreview = <Image source={{ uri: pickedImage }} style={styles.image} />;
   }
-  console.log("====================================");
-  console.log(pickedImage, "hello 🍎");
-  console.log("====================================");
+
   return (
     <View>
       <View style={styles.impagePreview}>{imagePreview}</View>
