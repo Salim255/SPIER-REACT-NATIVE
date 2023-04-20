@@ -32,4 +32,6 @@
 
 #### b \ API , make sure you have map static API, and get a Key like this SyBNZoUb1QG5R17zkIqDFAljje1biSUXBMw
 
-AIzaSyBNZoUb1QG5R17zkIqDFAljje1biSUXBMw
+## 🍎 Interactive Map:
+
+### run: expo install react-native-maps

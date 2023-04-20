@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import PlaceForm from "./components/PlaceForm";
 import AddPlace from "./screens/AddPlace";
 import Welcome from "./screens/Welcome";
+import Map from "./screens/Map";
 import IconButton from "./components/UI/IconButton";
 import { Colors } from "./constants/colors";
 
@@ -44,6 +45,7 @@ export default function App() {
               title: "Create A new Alert",
             }}
           />
+          <Stack.Screen name="Map" component={Map} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
