@@ -6,7 +6,7 @@ import {
 } from "expo-image-picker";
 import { useState } from "react";
 import { Colors } from "../constants/colors";
-import OutlineBtn from "./OutlineBtn";
+import OutlineBtn from "./UI/OutlineBtn";
 
 //Which launch the camera and wait us to take an image
 
