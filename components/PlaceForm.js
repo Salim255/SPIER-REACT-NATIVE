@@ -3,11 +3,14 @@ import ImagePicker from "./ImagePicker";
 import { Text, ScrollView, TextInput, StyleSheet } from "react-native";
 import { Colors } from "../constants/colors";
 import LocationPicker from "./LocationPicker";
+import Button from "./UI/Button";
 function PlaceForm() {
   const [entredTitle, setEntredTitle] = useState("");
   function changeTitleHandler(entredText) {
     setEntredTitle(entredText);
   }
+
+  function sendAlertHandler() {}
   return (
     <ScrollView style={styles.form}>
       <Text style={styles.label}>Title</Text>
@@ -18,6 +21,7 @@ function PlaceForm() {
       />
       <ImagePicker />
       <LocationPicker />
+      <Button onPress={sendAlertHandler}>Send alert</Button>
     </ScrollView>
   );
 }
