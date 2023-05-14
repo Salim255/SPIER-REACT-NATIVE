@@ -9,14 +9,33 @@ import {
   useForegroundPermissions,
   PermissionStatus,
 } from "expo-location";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getMapPreview } from "../util/location";
-import { useNavigation } from "@react-navigation/native";
+import {
+  useNavigation,
+  useRoute,
+  useIsFocused,
+} from "@react-navigation/native";
 function LocationPicker() {
   const [pickedLocation, setPickedLocation] = useState();
+  const isFocused = useIsFocused();
   const navigation = useNavigation();
+  const route = useRoute();
   const [locationPermissionInformation, requestPermission] =
     useForegroundPermissions();
+
+  useEffect(() => {
+    if (isFocused && route.params) {
+      //We will have a route params if we coming backe from pick map screen
+      const mapPickedLocation = {
+        lat: route.params.pickedLat,
+        lng: route.params.pickedLng,
+      };
+      if (mapPickedLocation) {
+        setPickedLocation(mapPickedLocation);
+      }
+    }
+  }, [route, isFocused]);
 
   //We need this permison to allow get to  the user location
   async function verifyPermissions() {
@@ -60,10 +79,6 @@ function LocationPicker() {
 
   let locationPreview = <Text>No location picked yet.</Text>;
   if (pickedLocation) {
-    console.log(
-      getMapPreview(pickedLocation.lat, pickedLocation.lng),
-      "helooooo🍎"
-    );
     locationPreview = (
       <Image
         style={styles.image}
@@ -73,6 +88,10 @@ function LocationPicker() {
       />
     );
   }
+
+  console.log("====================================");
+  console.log(pickedLocation);
+  console.log("====================================");
   return (
     <View>
       <View style={styles.mapPreview}>{locationPreview}</View>
