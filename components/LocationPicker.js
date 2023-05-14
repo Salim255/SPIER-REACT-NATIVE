@@ -16,7 +16,7 @@ import {
   useRoute,
   useIsFocused,
 } from "@react-navigation/native";
-function LocationPicker() {
+function LocationPicker({ onPickLocation }) {
   const [pickedLocation, setPickedLocation] = useState();
   const isFocused = useIsFocused();
   const navigation = useNavigation();
@@ -37,6 +37,9 @@ function LocationPicker() {
     }
   }, [route, isFocused]);
 
+  useEffect(() => {
+    onPickLocation(pickedLocation);
+  }, [pickedLocation, onPickLocation]);
   //We need this permison to allow get to  the user location
   async function verifyPermissions() {
     //In here we will check if we already have permission to use camera

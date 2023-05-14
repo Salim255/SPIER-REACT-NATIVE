@@ -37,7 +37,7 @@ function ImagePicker() {
     return true;
   }
 
-  async function takeImageHandler() {
+  async function takeImageHandler({ onTakenImage }) {
     //Needed for IOS permission
     const hasPermission = await verifyPermission();
     if (!hasPermission) {
@@ -54,6 +54,7 @@ function ImagePicker() {
       //To avoid getting super large images
     });
     setPickedImage(image.assets[0].uri);
+    onTakenImage(image.assets[0].uri);
   }
   let imagePreview = <Text>No Image Taken Yet</Text>;
   if (pickedImage) {
