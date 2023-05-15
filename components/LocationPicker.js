@@ -28,16 +28,12 @@ function LocationPicker({ onPickLocation, geocodeHandler, setAddress }) {
   useEffect(() => {
     if (isFocused && route.params) {
       //We will have a route params if we coming backe from pick map screen
-      console.log("====================================");
-      console.log(route.params, "hello params");
-      console.log("====================================");
+
       const mapPickedLocation = {
         lat: route.params.pickedLat,
         lng: route.params.pickedLng,
       };
-      console.log("====================================");
-      console.log(mapPickedLocation, " ♨️♨️💢🚯");
-      console.log("====================================");
+
       if (mapPickedLocation) {
         setPickedLocation(mapPickedLocation);
         console.log("Hello location", mapPickedLocation);
@@ -50,9 +46,7 @@ function LocationPicker({ onPickLocation, geocodeHandler, setAddress }) {
 
   useEffect(() => {
     onPickLocation(pickedLocation);
-    console.log("====================================");
-    console.log(pickedLocation, "🈯️✅");
-    console.log("====================================");
+
     // geocodeHandler(pickedLocation, reverseGeocodeAsync);
   }, [pickedLocation, onPickLocation]);
   //We need this permison to allow get to  the user location
@@ -107,9 +101,6 @@ function LocationPicker({ onPickLocation, geocodeHandler, setAddress }) {
     );
   }
 
-  console.log("====================================");
-  console.log(pickedLocation);
-  console.log("====================================");
   return (
     <View>
       <View style={styles.mapPreview}>{locationPreview}</View>

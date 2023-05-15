@@ -1,6 +1,14 @@
 # SPIER-REACT-NATIVE
 
-# SPIER-REACT-NATIVE
+## Spider : C'est une application qui permet aux utilisateurs de signaler un comportement inhabituel.
+
+## Fonctionnement:
+
+### L'utilisateur pourra signaler des comportements ou des événements inhabituels en prenant des photos et aussi en précisant le titre de l'événement en donnant également une petite description de l'événement et enfin,
+
+### Les utilisateurs doivent laisser leurs coordonnées
+
+# SPIER-REACT-NATIVE Requirements
 
 ## Setup react native app:
 

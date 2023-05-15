@@ -6,7 +6,7 @@ function Place({ place }) {
     return (
       <View style={styles.fallbackContainer}>
         <Text style={styles.fallbackText}>
-          No place Added Yet - Start Adding some!
+          Start reporting something unusual
         </Text>
       </View>
     );

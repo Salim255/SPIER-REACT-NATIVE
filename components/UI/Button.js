@@ -19,8 +19,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     paddingVertical: 8,
     margin: 4,
-    backgroundColor: Colors.primary800,
-    color: Colors.primary50,
+    backgroundColor: Colors.primary500,
+    color: Colors.gray700,
     elevation: 2,
     shadowColor: "black",
     shadowOpacity: 0.15,
@@ -35,5 +35,6 @@ const styles = StyleSheet.create({
   text: {
     textAlign: "center",
     fontSize: 16,
+    color: Colors.gray700,
   },
 });
