@@ -10,7 +10,7 @@ import OutlineBtn from "./UI/OutlineBtn";
 
 //Which launch the camera and wait us to take an image
 
-function ImagePicker() {
+function ImagePicker({ onTakenImage }) {
   const [pickedImage, setPickedImage] = useState();
   //For ios
   const [cameraPermissionInformation, requestPermission] =
@@ -37,7 +37,7 @@ function ImagePicker() {
     return true;
   }
 
-  async function takeImageHandler({ onTakenImage }) {
+  async function takeImageHandler() {
     //Needed for IOS permission
     const hasPermission = await verifyPermission();
     if (!hasPermission) {

@@ -8,6 +8,7 @@ import {
   getCurrentPositionAsync,
   useForegroundPermissions,
   PermissionStatus,
+  reverseGeocodeAsync,
 } from "expo-location";
 import { useEffect, useState } from "react";
 import { getMapPreview } from "../util/location";
@@ -16,7 +17,7 @@ import {
   useRoute,
   useIsFocused,
 } from "@react-navigation/native";
-function LocationPicker({ onPickLocation }) {
+function LocationPicker({ onPickLocation, geocodeHandler, setAddress }) {
   const [pickedLocation, setPickedLocation] = useState();
   const isFocused = useIsFocused();
   const navigation = useNavigation();
@@ -27,18 +28,32 @@ function LocationPicker({ onPickLocation }) {
   useEffect(() => {
     if (isFocused && route.params) {
       //We will have a route params if we coming backe from pick map screen
+      console.log("====================================");
+      console.log(route.params, "hello params");
+      console.log("====================================");
       const mapPickedLocation = {
         lat: route.params.pickedLat,
         lng: route.params.pickedLng,
       };
+      console.log("====================================");
+      console.log(mapPickedLocation, " ♨️♨️💢🚯");
+      console.log("====================================");
       if (mapPickedLocation) {
         setPickedLocation(mapPickedLocation);
+        console.log("Hello location", mapPickedLocation);
+        geocodeHandler(mapPickedLocation, reverseGeocodeAsync);
+        setAddress(mapPickedLocation);
+        console.log(pickedLocation, "🚭");
       }
     }
   }, [route, isFocused]);
 
   useEffect(() => {
     onPickLocation(pickedLocation);
+    console.log("====================================");
+    console.log(pickedLocation, "🈯️✅");
+    console.log("====================================");
+    // geocodeHandler(pickedLocation, reverseGeocodeAsync);
   }, [pickedLocation, onPickLocation]);
   //We need this permison to allow get to  the user location
   async function verifyPermissions() {
@@ -70,7 +85,7 @@ function LocationPicker({ onPickLocation }) {
       return;
     }
     const location = await getCurrentPositionAsync();
-    console.log(location);
+
     setPickedLocation({
       lat: location.coords.altitude,
       lng: location.coords.longitude,
